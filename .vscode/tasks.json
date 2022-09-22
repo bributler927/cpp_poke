@@ -1,0 +1,39 @@
+/* tasks.json */
+/*https://medium.com/gdplabs/build-and-debug-c-on-visual-studio-code-for-mac-77e05537105e*/
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "clang++",
+            "args": [
+                "-o",
+                "cpp_poke", // executable
+                "data_read.cpp", // main file
+                "-g",
+                "-v"
+            ],
+            "type": "shell",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        }
+    ]
+}
