@@ -27,6 +27,7 @@ int main()
     vector<string> row;
     string line, word, tmp;
 
+    int size;
     while (getline(pokefile, line)) {
         row.clear();
 
@@ -37,8 +38,6 @@ int main()
         // used for breaking words
         stringstream s(line);
 
-        cout << word << endl;
-
         // read every column data of a row and
         // store it in a string variable, 'word'
         while (getline(s, word, ',')) {
@@ -47,32 +46,28 @@ int main()
             // of a row to a vector
             row.push_back(word);
 
-            cout << word << endl;
         }
-
         // check that you've got a valid record
-            if(row.size() != 41)
+            if(row.size() < 40)
                 throw std::runtime_error("invalid record size (" +
                                          std::to_string(row.size()) + ")");
-                                         
-        // convert string to integer for comparision
-        pokedex2 = stoi(row[32]);
 
-        cout << pokedex2 << endl;
+        // convert string to integer for comparision
+        
+        pokedex2 = stoi(row[32]);
   
         // Compare the roll number
         if (pokedex2 == pokedexnum) {
   
             // Print the found data
             count = 1;
-            cout << "Details of Roll " << row[0] << " : \n";
-            cout << "Name: " << row[1] << "\n";
-            cout << "Maths: " << row[2] << "\n";
-            cout << "Physics: " << row[3] << "\n";
-            cout << "Chemistry: " << row[4] << "\n";
-            cout << "Biology: " << row[5] << "\n";
+            cout << "Pokedex #: " << row[32] << "\n";
+            cout << "Name: " << row[30] << "\n";
+            cout << "Type 1: " << row[36] << "\n";
+            cout << "Type 2: " << row[37] << "\n";
             break;
         }
+
     }
     if (count == 0)
         cout << "Record not found\n";
