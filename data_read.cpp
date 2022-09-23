@@ -6,8 +6,7 @@
 
 using namespace std;
 
-int main() 
-{
+int main() {
     // File pointer
     fstream pokefile;
 
@@ -74,4 +73,6 @@ int main()
 
     // Close the file
     pokefile.close();
+
+    return 0;
 }
