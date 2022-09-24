@@ -4,11 +4,16 @@
 #include <vector>
 #include <sstream>
 
+#include "global.h"
+#include "player.h"
+
 using namespace std;
 
-int main() {
+std::vector<string> Player::get_pokemon(int pokedexnum) {
     // File pointer
     fstream pokefile;
+
+    std::vector<string> stats;
 
     //pokedex # is 33 I think
     // Open the file
@@ -16,10 +21,7 @@ int main() {
 
     // Get the pokedex number
     // of which the data is required
-    int pokedexnum, pokedex2, count = 0;
-    cout << "Enter the pokedex number "
-         << "of the pokemon to display details: ";
-    cin >> pokedexnum;
+    int pokedex2, count = 0;
 
     // Read the Data from the file
     // as String Vector
@@ -57,13 +59,23 @@ int main() {
   
         // Compare the roll number
         if (pokedex2 == pokedexnum) {
-  
-            // Print the found data
+
+            // add pokemon stats to vector
             count = 1;
-            cout << "Pokedex #: " << row[32] << "\n";
-            cout << "Name: " << row[30] << "\n";
-            cout << "Type 1: " << row[36] << "\n";
-            cout << "Type 2: " << row[37] << "\n";
+            stats.push_back(row[32]);
+
+            string chosen_name = row[30];
+            stats.push_back(chosen_name);
+
+            string chosen_type1 = row[36];
+            stats.push_back(chosen_type1);
+
+            string chosen_type2 = row[37];
+            stats.push_back(chosen_type2);
+
+            string chosen_hp = row[28];
+            stats.push_back(chosen_hp);
+
             break;
         }
 
@@ -74,5 +86,5 @@ int main() {
     // Close the file
     pokefile.close();
 
-    return 0;
+    return stats;
 }

@@ -9,7 +9,7 @@
             "args": [
                 "-o",
                 "cpp_poke", // executable
-                "data_read.cpp", // main file
+                "${workspaceFolder}/*.cpp", // ALL FILES
                 "-g",
                 "-v"
             ],
